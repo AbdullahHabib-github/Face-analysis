@@ -65,13 +65,13 @@ while True:
         score+=1    
 
 
- 
-    landmarks = predictor(gray_frame, chehra[0])
+    if len(chehra)!=0:
+        landmarks = predictor(gray_frame, chehra[0])
 
-    # Convert dlib shape object to numpy array for easier manipulation
-    landmarks_np = np.array([[p.x, p.y] for p in landmarks.parts()])
-    if not is_mouth_open(landmarks_np):
-        score+=1
+        # Convert dlib shape object to numpy array for easier manipulation
+        landmarks_np = np.array([[p.x, p.y] for p in landmarks.parts()])
+        if not is_mouth_open(landmarks_np):
+            score+=1
 
 
     # Draw rectangles around the detected smiles
